@@ -20,6 +20,7 @@
     "helmet": "^3.15.0",
     "knex": "^0.20.13",
     "morgan": "^1.10.0",
+    "node": "^12.14.1",
     "pg": "^7.8.0",
     "postgrator-cli": "^3.2.0",
     "treeize": "^2.1.2",
@@ -30,6 +31,9 @@
     "mocha": "^7.1.1",
     "nodemon": "^2.0.3",
     "supertest": "^3.3.0"
+  },
+  "engines": {
+    "node": "12.14.1"
   },
   "contributors": [
     "Thomas `tomatao` Hudspith-Tatham <iammotivated@gmail.com>",
