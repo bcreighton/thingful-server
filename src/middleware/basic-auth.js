@@ -1,5 +1,3 @@
-const bcrypt = require('bcryptjs')
-
 const requireAuth = (req, res, next) => {
     console.log('requireAuth')
     console.log(req.get('Authorization'))
@@ -34,7 +32,7 @@ const requireAuth = (req, res, next) => {
                     error: 'Unauthorized request'
                 })
             }
-            return bcrypt.compare(tokenPassword, user.password)
+            return AuthService.comparePasswords(tokenPassword, user.password)
                 .then((passwordsMatch) => {
                     if (!passwordsMatch) {
                         return res.status(401).json({
