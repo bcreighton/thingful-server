@@ -32,6 +32,10 @@
     "postgrator-cli": "^3.2.0",
     "supertest": "^3.3.0"
   },
+  "engineStrict": true,
+  "engines": {
+    "node": "12.14.1"
+  },
   "contributors": [
     "Thomas `tomatao` Hudspith-Tatham <iammotivated@gmail.com>",
     "Joshua Reade Harris <jharris@thinkful.com>"
