@@ -166,9 +166,10 @@ describe.only('Users Endpoints', () => {
                         expect(res.body.nickname).to.eql('')
                         expect(res.body).to.not.have.property('password')
                         expect(res.headers.location).to.eql(`/api/users/${res.body.id}`)
-                        const expectedDate = new Date().toLocaleString('en', { timeZone: 'UTC' })
+                        const expectedDate = new Date()
                         const actualDate = new Date(res.body.date_created).toLocaleString()
-                        expect(actualDate).to.eql(expectedDate)
+                        expectedDate.setHours(expectedDate.getHours() - 6)
+                        expect(actualDate).to.eql(expectedDate.toLocaleString('en', { timeZone: 'UTC' }))
                     })
                     .expect(res =>
                         db
@@ -180,10 +181,11 @@ describe.only('Users Endpoints', () => {
                                 expect(row.user_name).to.eql(newUser.user_name)
                                 expect(row.full_name).to.eql(newUser.full_name)
                                 expect(row.nickname).to.eql(null)
-                                const expectedDate = new Date().toLocaleString('en', { timeZone: 'UTC' })
+                                const expectedDate = new Date()
                                 const actualDate = new Date(row.date_created).toLocaleString()
-                                expect(actualDate).to.eql(expectedDate)
-
+                                expectedDate.setHours(expectedDate.getHours() - 6)
+                                expect(actualDate).to.eql(expectedDate.toLocaleString('en', { timeZone: 'UTC' }))
+                                debugger
                                 return bcrypt.compare(newUser.password, row.password)
                             })
                             .then(compareMatch => {
